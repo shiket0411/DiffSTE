@@ -84,7 +84,7 @@ data:
 model:
   source: raw
   target: "src.trainers.CharInpaintModelWrapper"
-  pretrained_model_path: runwayml/stable-diffusion-inpainting
+  pretrained_model_path: sd-legacy/stable-diffusion-inpainting
   loss_type: MaskMSELoss
   loss_alpha: 5
   base_learning_rate: 5.0e-5

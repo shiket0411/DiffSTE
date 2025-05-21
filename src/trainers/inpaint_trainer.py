@@ -21,7 +21,7 @@ from pytorch_lightning.utilities import rank_zero_only
 from pytorch_lightning.utilities.types import STEP_OUTPUT
 from pytorch_lightning.loggers import WandbLogger, TensorBoardLogger
 
-from diffusers import AutoencoderKL, UNet2DConditionModel, ConfigMixin
+from ...diffusers import AutoencoderKL, UNet2DConditionModel, ConfigMixin, DDIMScheduler
 from transformers import CLIPTextModel, CLIPTokenizer, CanineModel, T5EncoderModel
 from ..model import (
     MaskMSELoss,
@@ -42,7 +42,7 @@ from .utils import (
 
 FIXED_COMMIT_IDS = {
     "CompVis/stable-diffusion-v1-4": "3857c45b7d4e78b3ba0f39d4d7f50a2a05aa23d4",
-    "runwayml/stable-diffusion-inpainting": "caac1048f28756b68042add4670bec6f4ae314f8",
+    "sd-legacy/stable-diffusion-inpainting": "8a4288a76071f7280aedbdb3253bdb9e9d5d84bb",
 }
 
 
@@ -687,6 +687,7 @@ class CharInpaintTrainer(pl.LightningModule):
         image_results = {}
         images = self.convert_latent2image(latent_results["latents"])
         image_results["images"] = images
+        image_results["intermediate_images"] = None
         if return_intermediates:
             intermediate_images = [
                 self.convert_latent2image(x) for x in latent_results["intermediates"]
@@ -724,7 +725,7 @@ class CharInpaintTrainer(pl.LightningModule):
                     # don't cat raw image and mask to result
                     image_results[f"{i}-{caption}"] = sample_res
 
-        return image_results
+        return image_results, sample_results["intermediate_images"]
 
 
 #########################################################################

@@ -7,14 +7,14 @@ from .unet_2d_blocks import (
     multicond_get_down_block,
     multicond_get_up_block,
 )
-from diffusers.models.unet_2d_blocks import (
+from ...diffusers.models.unet_2d_blocks import (
     DownBlock2D,
     UpBlock2D,
 )
-from diffusers.models.embeddings import TimestepEmbedding, Timesteps
-from diffusers.utils import BaseOutput, logging
-from diffusers.modeling_utils import ModelMixin
-from diffusers.configuration_utils import ConfigMixin, register_to_config
+from ...diffusers.models.embeddings import TimestepEmbedding, Timesteps
+from ...diffusers.utils import BaseOutput, logging
+from ...diffusers.modeling_utils import ModelMixin
+from ...diffusers.configuration_utils import ConfigMixin, register_to_config
 import torch.utils.checkpoint
 import torch.nn as nn
 import torch

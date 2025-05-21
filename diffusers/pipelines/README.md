@@ -160,7 +160,7 @@ init_image = download_image(img_url).resize((512, 512))
 mask_image = download_image(mask_url).resize((512, 512))
 
 pipe = StableDiffusionInpaintPipeline.from_pretrained(
-    "runwayml/stable-diffusion-inpainting",
+    "sd-legacy/stable-diffusion-inpainting",
     revision="fp16",
     torch_dtype=torch.float16,
 )

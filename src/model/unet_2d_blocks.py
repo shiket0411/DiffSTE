@@ -2,9 +2,9 @@ import numpy as np
 import torch
 from torch import nn
 
-from diffusers.models.attention import AttentionBlock, Transformer2DModel
-from diffusers.models.resnet import Downsample2D, FirDownsample2D, FirUpsample2D, ResnetBlock2D, Upsample2D
-from diffusers.models.unet_2d_blocks import get_down_block, get_up_block, UNetMidBlock2DCrossAttn, CrossAttnDownBlock2D, CrossAttnUpBlock2D
+from ...diffusers.models.attention import AttentionBlock, Transformer2DModel
+from ...diffusers.models.resnet import Downsample2D, FirDownsample2D, FirUpsample2D, ResnetBlock2D, Upsample2D
+from ...diffusers.models.unet_2d_blocks import get_down_block, get_up_block, UNetMidBlock2DCrossAttn, CrossAttnDownBlock2D, CrossAttnUpBlock2D
 
 from typing import List, Tuple, Union, Optional, Dict
 

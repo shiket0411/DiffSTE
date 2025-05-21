@@ -13,7 +13,7 @@ from pytorch_lightning.utilities import rank_zero_only
 from pytorch_lightning.utilities.types import STEP_OUTPUT
 
 from .utils import count_params, pl_on_train_tart
-from diffusers import AutoencoderKL
+from ...diffusers import AutoencoderKL
 
 
 class VAETrainer(pl.LightningModule):

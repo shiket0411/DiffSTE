@@ -139,7 +139,7 @@ class DiffusionPipeline(ConfigMixin):
 
     def register_modules(self, **kwargs):
         # import it here to avoid circular import
-        from diffusers import pipelines
+        from ...diffusers import pipelines
 
         for name, module in kwargs.items():
             # retrieve library
@@ -508,7 +508,7 @@ class DiffusionPipeline(ConfigMixin):
         if pipeline_class.__name__ == "StableDiffusionInpaintPipeline" and version.parse(
             version.parse(config_dict["_diffusers_version"]).base_version
         ) <= version.parse("0.5.1"):
-            from diffusers import StableDiffusionInpaintPipeline, StableDiffusionInpaintPipelineLegacy
+            from ...diffusers import StableDiffusionInpaintPipeline, StableDiffusionInpaintPipelineLegacy
 
             pipeline_class = StableDiffusionInpaintPipelineLegacy
 
@@ -516,9 +516,9 @@ class DiffusionPipeline(ConfigMixin):
                 "You are using a legacy checkpoint for inpainting with Stable Diffusion, therefore we are loading the"
                 f" {StableDiffusionInpaintPipelineLegacy} class instead of {StableDiffusionInpaintPipeline}. For"
                 " better inpainting results, we strongly suggest using Stable Diffusion's official inpainting"
-                " checkpoint: https://huggingface.co/runwayml/stable-diffusion-inpainting instead or adapting your"
+                " checkpoint: https://huggingface.co/sd-legacy/stable-diffusion-inpainting instead or adapting your"
                 f" checkpoint {pretrained_model_name_or_path} to the format of"
-                " https://huggingface.co/runwayml/stable-diffusion-inpainting. Note that we do not actively maintain"
+                " https://huggingface.co/sd-legacy/stable-diffusion-inpainting. Note that we do not actively maintain"
                 " the {StableDiffusionInpaintPipelineLegacy} class and will likely remove it in version 1.0.0."
             )
             deprecate("StableDiffusionInpaintPipelineLegacy", "1.0.0",
@@ -541,7 +541,7 @@ class DiffusionPipeline(ConfigMixin):
         init_kwargs = {}
 
         # import it here to avoid circular import
-        from diffusers import pipelines
+        from ...diffusers import pipelines
 
         # 3. Load each module in the pipeline
         for name, (library_name, class_name) in init_dict.items():
